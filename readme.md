@@ -199,6 +199,10 @@ See the above sections for model downloads. You can launch the software with:
 
       docker compose -f docker-compose.yml -f docker-compose.cuda.yml up --build -d
 
+- On GPU (using CPU image):
+
+      PYTHON_BASE=base docker compose -f docker-compose.yml -f docker-compose.cuda.yml up --build -d
+
 Then you can access the software at [http://localhost:80](http://localhost:80).
 
 ### Linux (AMD GPUs)

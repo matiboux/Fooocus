@@ -98,3 +98,17 @@ VOLUME /app
 EXPOSE ${PORT}
 
 CMD [ "/bin/sh", "-c", "python entry_with_update.py --listen \"0.0.0.0\" --port \"${PORT}\"" ]
+
+
+# --
+# Prod image
+
+FROM app_base AS app_prod
+
+# Copy source code
+COPY --link . .
+
+# Expose port
+EXPOSE ${PORT}
+
+CMD [ "/bin/sh", "-c", "python entry_with_update.py --listen \"0.0.0.0\" --port \"${PORT}\"" ]

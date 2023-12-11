@@ -42,7 +42,7 @@ RUN apt-get update && \
 
 
 # --
-# App base image
+# Base image
 
 FROM python_${PYTHON_BASE} AS app_base
 
@@ -87,9 +87,9 @@ ENV PORT=${PORT}
 
 
 # --
-# Prod build image
+# Dev image
 
-FROM app_base AS app_prod
+FROM app_base AS app_dev
 
 # Mount source code as volume
 VOLUME /app

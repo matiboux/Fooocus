@@ -10,7 +10,7 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
-      target: app_prod
+      target: app_dev
       args:
         PYTHON_BASE: ${PYTHON_BASE:-base} # Valid values: base, cuda
         PORT: ${EXPOSED_PORT:-80}

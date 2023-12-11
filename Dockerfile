@@ -102,6 +102,12 @@ RUN apt-get update && \
 ARG PORT=80
 ENV PORT=${PORT}
 
+# Create user 'user' and group 'app'
+RUN groupadd -r app && \
+	useradd -lr -G app -d /app user && \
+	chown -R user:app /app
+USER user
+
 
 # --
 # Dev image

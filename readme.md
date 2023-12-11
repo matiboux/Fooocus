@@ -199,6 +199,10 @@ See the above sections for model downloads. You can launch the software with:
 
       docker compose -f docker-compose.yml -f docker-compose.cuda.yml up --build -d
 
+- On ROCm GPU (AMD):
+
+      docker compose -f docker-compose.yml -f docker-compose.rocm.yml up --build -d
+
 - On GPU (using CPU image):
 
       PYTHON_BASE=base docker compose -f docker-compose.yml -f docker-compose.cuda.yml up --build -d

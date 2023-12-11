@@ -13,7 +13,7 @@ ARG ROCM_VERSION='5.6'
 # Upstream images
 
 FROM python:${PYTHON_VERSION}-slim AS python_upstream
-FROM nvidia/cuda:${CUDA_VERSION}-runtime-ubuntu22.04 AS cuda_upstream
+FROM nvidia/cuda:${CUDA_VERSION}-cudnn8-runtime-ubuntu22.04 AS cuda_upstream
 
 
 # --

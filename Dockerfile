@@ -2,10 +2,12 @@
 
 # This Dockerfile uses the root project folder as context.
 
-# Dockerfile globalarguments
+# Dockerfile global arguments
+# PYTHON_BASE valid values: base, cuda, rocm
 ARG PYTHON_BASE='base'
 ARG PYTHON_VERSION='3.10'
 ARG CUDA_VERSION='12.1.1'
+ARG ROCM_VERSION='5.6'
 
 # --
 # Upstream images
@@ -42,6 +44,12 @@ RUN apt-get update && \
 
 
 # --
+# Python ROCm image
+
+FROM python_upstream AS python_rocm
+
+
+# --
 # Base image
 
 FROM python_${PYTHON_BASE} AS app_base
@@ -60,6 +68,12 @@ RUN pip install --no-cache-dir -r requirements_versions.txt && \
 RUN if [ "${PYTHON_BASE}" = 'cuda' ]; then \
 		pip install --no-cache-dir \
 			--index-url "https://download.pytorch.org/whl/cu$(echo "${CUDA_VERSION}" | cut -d '.' -f 1,2 | tr -d '.')" \
+			torch==2.1.0 \
+			torchvision==0.16.0 \
+		; \
+	elif [ "${PYTHON_BASE}" = 'rocm' ]; then \
+		pip install --no-cache-dir \
+			--index-url "https://download.pytorch.org/whl/rocm${ROCM_VERSION}" \
 			torch==2.1.0 \
 			torchvision==0.16.0 \
 		; \

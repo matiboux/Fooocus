@@ -9,7 +9,7 @@ services:
     image: ${IMAGES_PREFIX:-fooocus-cuda}:${DOCKER_TAG:-latest}
     build:
       args:
-        PYTHON_BASE: ${PYTHON_BASE:-cuda}
+        PYTHON_BASE: ${PYTHON_BASE:-rocm}
     # Deploy override
     deploy:
       resources:

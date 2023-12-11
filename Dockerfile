@@ -70,17 +70,20 @@ RUN if [ "${PYTHON_BASE}" = 'cuda' ]; then \
 			--index-url "https://download.pytorch.org/whl/cu$(echo "${CUDA_VERSION}" | cut -d '.' -f 1,2 | tr -d '.')" \
 			torch==2.1.0 \
 			torchvision==0.16.0 \
+			torchaudio==2.1.0 \
 		; \
 	elif [ "${PYTHON_BASE}" = 'rocm' ]; then \
 		pip install --no-cache-dir \
 			--index-url "https://download.pytorch.org/whl/rocm${ROCM_VERSION}" \
 			torch==2.1.0 \
 			torchvision==0.16.0 \
+			torchaudio==2.1.0 \
 		; \
 	else \
 		pip install --no-cache-dir \
 			torch==2.1.0 \
 			torchvision==0.16.0 \
+			torchaudio==2.1.0 \
 		; \
 	fi && \
 	# Clean up

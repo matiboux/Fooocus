@@ -5,8 +5,8 @@ version: '3.4'
 services:
 
   app:
-    # Build
-    image: ${IMAGES_PREFIX:-fooocus-gpu}:${DOCKER_TAG:-latest}
+    # Build override
+    image: ${IMAGES_PREFIX:-fooocus-cuda}:${DOCKER_TAG:-latest}
     build:
       args:
         PYTHON_BASE: ${PYTHON_BASE:-cuda} # Valid values: base, cuda

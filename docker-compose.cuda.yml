@@ -1,0 +1,21 @@
+version: '3.4'
+
+# Services overrides for running on GPU
+
+services:
+
+  app:
+    # Build
+    image: ${IMAGES_PREFIX:-fooocus-gpu}:${DOCKER_TAG:-latest}
+    build:
+      args:
+        PYTHON_BASE: ${PYTHON_BASE:-cuda} # Valid values: base, cuda
+    # Deploy override
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities:
+                - gpu

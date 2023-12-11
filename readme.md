@@ -184,6 +184,23 @@ Or if you want to open a remote port, use
 
 Use `python entry_with_update.py --preset anime` or `python entry_with_update.py --preset realistic` for Fooocus Anime/Realistic Edition.
 
+### Docker (Docker Compose)
+
+    git clone https://github.com/lllyasviel/Fooocus.git
+    cd Fooocus
+
+See the above sections for model downloads. You can launch the software with:
+
+- On CPU:
+
+      docker compose up --build -d
+
+- On CUDA GPU (Nvidia):
+
+      docker compose -f docker-compose.yml -f docker-compose.cuda.yml up --build -d
+
+Then you can access the software at [http://localhost:80](http://localhost:80).
+
 ### Linux (AMD GPUs)
 
 Same with the above instructions. You need to change torch to AMD version

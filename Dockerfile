@@ -103,8 +103,8 @@ ARG PORT=80
 ENV PORT=${PORT}
 
 # Create user 'user' and group 'app'
-RUN groupadd -r app && \
-	useradd -lr -G app -d /app user && \
+RUN groupadd app && \
+	useradd -lm -G app user && \
 	chown -R user:app /app
 USER user
 
@@ -120,7 +120,7 @@ VOLUME /app
 # Expose port
 EXPOSE ${PORT}
 
-CMD [ "/bin/sh", "-c", "python entry_with_update.py --listen \"0.0.0.0\" --port \"${PORT}\"" ]
+CMD [ "/bin/sh", "-c", "python entry_with_update.py --listen '0.0.0.0' --port \"${PORT}\"" ]
 
 
 # --
@@ -134,4 +134,4 @@ COPY --link . .
 # Expose port
 EXPOSE ${PORT}
 
-CMD [ "/bin/sh", "-c", "python entry_with_update.py --listen \"0.0.0.0\" --port \"${PORT}\"" ]
+CMD [ "/bin/sh", "-c", "python entry_with_update.py --listen '0.0.0.0' --port \"${PORT}\"" ]

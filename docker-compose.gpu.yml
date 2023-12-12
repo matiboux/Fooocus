@@ -1,0 +1,15 @@
+version: '3.4'
+
+# Services definition for deployment with GPU support
+
+services:
+
+  app:
+    # Deploy override
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [ gpu ]
